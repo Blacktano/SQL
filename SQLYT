@@ -1,0 +1,79 @@
+DROP TABLE student;
+
+
+CREATE TABLE student (
+    student_id INT AUTO_INCREMENT,
+    name VARCHAR(20),
+    major VARCHAR(20),
+    PRIMARY KEY(student_id)
+);
+
+
+CREATE TABLE student (
+    student_id INT,
+    name VARCHAR(20),
+    major VARCHAR(20) DEFAULT 'Nieznana',
+    PRIMARY KEY(student_id)
+);
+
+
+CREATE TABLE student (
+    student_id INT,
+    name VARCHAR(20) NOT NULL,
+    major VARCHAR(20) UNIQUE,
+    PRIMARY KEY(student_id)
+);
+
+
+CREATE TABLE student (
+    student_id INT,
+    name VARCHAR(20),
+    major VARCHAR(20),
+    PRIMARY KEY(student_id)
+);
+
+DESCRIBE student;
+
+ALTER TABLE  student ADD numer VARCHAR(9);
+
+ALTER TABLE  student DROP COLUMN numer;
+
+
+SELECT * FROM student;
+
+INSERT INTO student VALUE(1,'Adam','Biologia');
+INSERT INTO student VALUE(2,'Mateusz','Chemia');
+INSERT INTO student VALUE(3,'Wiktoria','Informatyka');
+INSERT INTO student VALUE(4,'Zbigniew','Niemiecki');
+INSERT INTO student VALUE(6,'Aleksandra','Angielski');
+
+
+INSERT INTO student(student_id,name) VALUE(5,'Wiktor')
+
+INSERT INTO student(name,major) VALUE('Wiktor','Informatyka');
+
+
+UPDATE student SET major ='Bio' WHERE major ='Biologia';
+
+UPDATE student SET major ='Che' WHERE major ='Chemia';
+
+UPDATE student SET major ='Języki obce' WHERE major ='Niemiecki' OR major ='Angielski';
+
+DELETE FROM student WHERE student_id='5';
+
+
+SELECT name FROM student;
+
+SELECT name,major FROM student ORDER BY name;
+
+SELECT name,major FROM student ORDER BY name DESC;
+
+SELECT * FROM student ORDER BY student_id DESC LIMIT 3;
+
+SELECT * FROM student WHERE major = 'Biologia' or major ='Chemia';
+
+-- można użyć: <, >, <=, >=, =, <>(nierówne), AND, OR
+
+SELECT * FROM student WHERE major <> 'Biologia';
+
+SELECT * FROM student WHERE name IN('Mateusz','Wiktor','Zbigniew');
